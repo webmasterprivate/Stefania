@@ -1,0 +1,1 @@
+<?php get_header(); ?><div id="main"><div id="content"><h1><?php _e('404 Error','boiler'); ?></h1><p><?php _e('Page not found.','boiler'); ?></p><ul id="blogSidebar"><?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar("sidebar") ) : endif; ?></ul></div></div><?php get_footer(); ?>

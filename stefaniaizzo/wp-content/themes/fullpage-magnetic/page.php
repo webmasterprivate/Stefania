@@ -1,0 +1,2 @@
+<?php get_header(); if ( have_posts() ) while ( have_posts() ) : the_post(); ?><div id="main"><div id="content"><div class="page"><h1><?php the_title(); edit_post_link(); ?></h1><?php the_content();
+wp_link_pages(); ?></div><?php comments_template(); ?><ul id="blogSidebar"><?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar("sidebar") ) : endif; ?></ul></div></div><?php endwhile; get_footer(); ?>

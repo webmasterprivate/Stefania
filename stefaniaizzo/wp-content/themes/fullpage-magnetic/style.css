@@ -1,0 +1,485 @@
+/*
+Theme Name: Fullpage Mgnetic
+Theme URI: http://csshero.org
+Author URI:  http://csshero.org
+Description: Magnetic Scroll
+Author: M
+Version: 0.1
+License: GNU General Public License v2.0
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: light, flexible-width, custom-background, custom-colors, custom-header, custom-menu, featured-image-header, featured-images, full-width-template, theme-options
+
+ 
+ 
+ /**
+ * fullPage 1.2.7
+ * https://github.com/alvarotrigo/fullPage.js
+ * MIT licensed
+ *
+ * Copyright (C) 2013 alvarotrigo.com - A project by Alvaro Trigo
+ */
+body, html {
+    margin:0;
+    padding:0;
+}
+#superContainer {
+    height:100%;
+    position:relative;
+}
+.section, .slide {
+	background: linear-gradient(2deg, #ffffff, #bfbfbf);
+	background-attachment: fixed;
+	background-position: right 30px;
+	background-size:   100% auto;
+	background-repeat: no-repeat;
+	min-height: 800px;
+}
+
+
+
+ @media screen and (min-width: 0) and (max-width: 768px) {
+	
+	#home { background-attachment: fixed; background-size: cover; }
+	
+	}  
+ 
+ 
+.section{ 
+    position: relative;
+	-webkit-box-sizing: border-box; 
+    -moz-box-sizing: border-box; 
+         box-sizing: border-box; 
+}
+.slide {
+    float: left; 
+	background-size: cover; background-position: fixed;
+}
+.slide, .slidesContainer {
+    height: 100%;
+    display: block;
+}
+.slides {
+	height: 100%;
+    overflow: hidden;
+    position: relative;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+	
+
+}
+.section.table,
+.slide.table{
+	display:table;
+	width:100%;
+}
+.tableCell{
+	display:table-cell;
+	vertical-align: middle;
+	width:100%;
+	height: 100%;
+}
+.slidesContainer {
+    float: left;
+    position: relative;
+}
+.controlArrow{
+    position:absolute;
+    top:50%;
+    cursor:pointer;
+	width: 0px;
+	height: 0px;
+	border-style: solid;
+	margin-top: -38px;
+}
+
+.controlArrow.prev{
+	left:15px;
+	width: 0px;
+	border-width: 38.5px 34px 38.5px 0;
+	border-color: transparent #fff transparent transparent;
+}
+.controlArrow.next{  
+	right:15px;
+	border-width: 38.5px 0 38.5px 34px;
+	border-color: transparent transparent transparent #fff;
+}
+.scrollable{
+	overflow:scroll;
+}
+.easing{
+    -webkit-transition: all 0.7s ease-out;
+    -moz-transition: all 0.7s ease-out;
+    -o-transition: all 0.7s ease-out;
+    transition: all 0.7s ease-out;
+}
+#fullPage-nav{
+	position: fixed;
+	z-index: 100;
+	margin-top: -32px;
+	top: 50%;
+	opacity: 1;
+}
+#fullPage-nav ul{
+	margin:0;
+	padding:0;
+}
+#fullPage-nav li{
+	display: block;
+	width: 14px;
+	height: 13px;
+	margin: 7px;
+	position:relative;
+}
+#fullPage-nav li a{
+	display: block;
+	position: relative;
+	z-index: 1;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+	text-decoration: none;
+}
+#fullPage-nav li .active span{
+	background: #333;
+}
+#fullPage-nav span{
+	top: 2px;
+	left: 2px;
+	width: 8px;
+	height: 8px;
+	border: 1px solid #000;
+	background: rgba(0, 0, 0, 0);
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+	position: absolute;
+	z-index: 1;
+}
+.fullPage-tooltip{
+	position: absolute;
+	color: #ff;
+	font-size: 14px;
+	font-family: arial, helvetica, sans-serif;
+	top: -2px;
+}
+.fullPage-tooltip.right{
+	right: 20px;
+}
+.fullPage-tooltip.left{
+	left: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@CHARSET "ISO-8859-1";
+/* Reset CSS
+ * --------------------------------------- */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,
+form,fieldset,input,textarea,p,blockquote,th,td {
+    padding: 0;
+    margin: 0;
+}
+a{
+	text-decoration:none;
+}
+table {
+    border-spacing: 0;    
+}
+fieldset,img {
+    border: 0;
+}
+address,caption,cite,code,dfn,em,strong,th,var {
+    font-weight: normal;
+    font-style: normal;
+}
+strong{
+	font-weight: bold;
+}
+ol,ul {
+    list-style: none;
+    margin:0;
+    padding:0;
+}
+caption,th {
+    text-align: left;
+
+}
+h1,h2,h3,h4,h5,h6 {
+    font-weight: normal;
+    font-size: 100%;
+    margin:0;
+    padding:0;
+    color:#444;
+}
+q:before,q:after {
+    content:'';
+}
+abbr,acronym { border: 0;
+}
+
+
+/* Custom CSS
+ * --------------------------------------- */
+body{
+	font-family: arial,helvetica;
+	color: #333;
+	color: rgba(0,0,0,0.5);
+}
+.wrap{
+	margin-left: auto;
+	margin-right: auto;
+	width: 960px;
+	position: relative;
+}
+h1{
+	font-size: 6em;	
+}
+p{
+ 
+}
+ 
+#menu li {
+	display:inline-block;
+	margin: 10px;
+	color: #000;
+	padding: 2px 4px;
+}
+#menu li.active{
+ 
+	 
+}
+#menu li a{
+	text-decoration:none;
+	color: #000;
+}
+#menu li.active a:hover{
+	color: #000;
+}
+#menu li:hover{
+	background: rgba(255,255,255, 0.8);
+}
+#menu li a,
+#menu li.active a{
+	
+}
+#menu li.active a{
+
+}
+#menu{
+	position:fixed;
+	top:0;
+	left:0;
+	 
+	z-index: 70;
+	width: 100%;
+	padding: 0;
+	margin:0;
+}
+#section0 img,
+#section1 img{
+	margin: 20px 0 0 0;
+}	
+#section2 img{
+	margin: 20px 0 0 52px;	
+}
+#section3 img{
+	bottom: 0px;
+	position:absolute;
+	margin-left: -420px;
+}
+.intro p{
+	width: 50%;
+	margin: 0 auto;
+	font-size: 1.5em;
+}
+.twitter-share-button{
+	position: absolute;
+	z-index: 99;
+	right: 149px;
+	top: 9px;
+}
+#fullPage-nav{
+	position: absolute;
+	z-index: 100;
+	margin-top: -32px;
+	top: 50%;
+	opacity: 1;
+}
+#fullPage-nav li{
+	display: block;
+	width: 14px;
+	height: 13px;
+	margin: 7px;
+}
+#fullPage-nav li a{
+	display: block;
+	position: relative;
+	z-index: 1;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+	text-decoration: none;
+}
+#fullPage-nav li .active span{
+	background: #333;
+}
+#fullPage-nav span{
+	top: 2px;
+	left: 2px;
+	width: 8px;
+	height: 8px;
+	border: 1px solid #000;
+	background: rgba(0, 0, 0, 0);
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+	position: absolute;
+	z-index: 1;
+}
+
+
+ 
+ 
+ 
+.global-loading {margin-top: 2000px}
+
+
+.active {}
+.edit-link {font-size: 10px;}
+
+
+.slides-submenu li {
+	display:inline-block;
+	margin: 10px;
+	color: #000;
+	background:#fff;
+	background: rgba(255,255,255, 0.5);
+	-webkit-border-radius: 10px; 
+            border-radius: 10px; 
+}
+.slides-submenu li.active{
+	background:#666;
+	background: rgba(0,0,0, 0.5);
+	color: #fff;
+}
+ .slides-submenu li a{
+	text-decoration:none;
+	color: #000;
+}
+.slides-submenu li.active a:hover{
+	color: #000;
+}
+.slides-submenu li:hover{
+	background: rgba(255,255,255, 0.8);
+}
+.slides-submenu li a,
+.slides-submenu  li.active a{
+	padding: 9px 18px;
+	display:block;
+}
+.slides-submenu  li.active a{
+	color: #fff;
+}
+.slides-submenu-container {
+   opacity:0.8;
+	background: #efefef;
+	text-align: center;
+ 
+position: absolute;
+	z-index: 70;
+	width: 100%;
+	padding: 10px 0 20px 0;
+	margin:0;
+	bottom: 0;
+}
+.slides-submenu-container .title-submenu {font-size:18px !important;}
+.slides-submenu .selected {background: lime}
+.slides-submenu li:hover {background: lime}
+
+.fade {
+   opacity: 0.5;
+   transition: opacity .25s ease-in-out;
+   -moz-transition: opacity .25s ease-in-out;
+   -webkit-transition: opacity .25s ease-in-out;
+   }
+   
+    .fade:hover {
+      opacity: 1;
+      }
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	/* AL  VOLO DA HERO */
+	  
+	  #verdone { background-color: #b35656; background-image: linear-gradient(2deg, #005612, #00ef33); }
+	  #primo { background-image: linear-gradient(to right, #009246 0%,#009246 33%,#ffffff 33%,#ffffff 66%,#ce2b37 66%,#ce2b37 100%); }
+	  #menu { background-color: #000000; text-align: center; padding-bottom: 5px; padding-top: 5px; z-index: 9999; opacity: 0.85; background-image: linear-gradient(360deg, #322929, #141414); background-attachment: scroll; }
+	  #menu li a { padding-top: 2px; padding-bottom: 1px; font-family: Arimo; color: #ffffff; background-image: none; text-transform: uppercase; font-size: 14px; font-weight: normal; text-shadow: 0px 0px 3px #000000; }
+	  #menu li { background-color: transparent; } #menu li a:hover { color: #969696; background-color: transparent; } #menu li:hover { background-color: transparent; }
+	  #menu li.active   {   background: #efefef; }
+	  #menu li.active a { color: #333;   text-decoration: none; font-weight: normal; text-shadow: #000 1px 1px 6px; } #menu li.active a:hover { color: #b81318; } #toplogo { background-image: url(http://www.reddoorbali.com/blog/wp-content/uploads/2013/06/red-door-bali.jpg); z-index: 99999999999; width: 114px; height: 132px; position: fixed; top: 0px; left: 0px; display: block; background-attachment: scroll; background-size: 100% 100%; background-position: left top; margin-left: 5%; } #toplogo:hover { transition: 2s; transform: rotateZ(360deg); }
+/*  end local AL  VOLO DA HERO */
+
+
+
+.vimCode {margin-top:150px;}
+#video {background: #000}
+
+.main-page-container h2 { font-size: 41px; font-family: Crimson Text; color: #c5b8b8; text-shadow: rgb(0, 0, 0) 1px 1px 4px; line-height: 51px; margin-top: 20px; margin-bottom: 20px; text-align: left; }
+.main-page-container h3 { font-family: Crimson Text; font-size: 27px; color: #c7c6c6; text-shadow: rgb(0, 0, 0) 1px 1px 4px; margin-bottom: 20px; }
+.the-content { background-color: #a23939; color: #c9c9c9;   font-size: 16px; padding-top: 17px; padding-bottom: 19px; padding-left: 5%; padding-right: 5%;    width:20%;
+  border-radius: 23px;  opacity: 0.95; }
+ 
+
+
+
+
+
+/* stefania */
+.edit-link {color: pink;color: #fff;   z-index: 9999999;}
+ 
+#wpadminbar { opacity: 0; height: 2px;} #wpadminbar:hover { opacity: 0.9;height: auto !important }
+ 
+ .the-content { font-family: Dosis; font-size: 23px; background-color: transparent; border-width: 0px; border-style: none; color: #7a7a7a; width: 40%; text-align: left; font-weight: normal; line-height: 33px;   overflow-x: visible; }
+ 
+ #menu li a { font-family: Dosis; font-size: 14px; }
+ .the-content h2 { font-size: 100px; color: #504848; margin-bottom: 28px; font-family: Philosopher; text-shadow: rgb(255, 255, 255) 0px 0px 3px; word-spacing: 0px; letter-spacing: 0px; line-height: 78px; text-align: center; }
+.gallery-icon img {float: left}
